@@ -1,0 +1,266 @@
+$container-large-desktop: ((940px + 30px)) !default
+
+// Colors
+
+/* Bootstrap Default Colors */
+
+//== Colors
+//
+
+/* RyanCollier.co Colors */
+$rcored: #e31b1f
+$white: #fff
+$body-bg: $white
+
+
+/* Gray and brand colors for use across Bootstrap. */
+$gray-darker: lighten(#000, 13.5%)  // #222
+$gray-dark: lighten(#000, 20%) // #333
+$gray: lighten(#000, 33.5%) // #555
+$gray-light: lighten(#000, 46.7%) // #777
+$gray-lightish: lighten(#000, 76.8%)
+$gray-lighter: lighten(#000, 93.5%) // #eee
+$brand-primary: $rcored !default
+$brand-success: #5cb85c !default
+$brand-info: #5bc0de !default
+$brand-warning: #f0ad4e !default
+$brand-danger: #d9534f !default
+
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: "Proxima Nova", Helvetica, Arial, sans-serif !default
+$font-family-serif: "Chaparral Pro", Georgia, "Times New Roman", Times, serif !default
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default
+$font-family-base: $font-family-sans-serif !default
+$font-size-base: 20px !default
+$font-size-large: ceil(($font-size-base * 1.414)) // 28px   
+$font-size-small: ceil(($font-size-base * 0.795)) // 16px
+$font-size-h1: floor(($font-size-base * 1.999))   // 40px
+$font-size-h2: floor(($font-size-base * 1.589))   // 32px
+$font-size-h3: ceil(($font-size-base * 1.414))    // 28px
+$font-size-h4: ceil(($font-size-base * 1.124))    // 22px
+$font-size-h5: $font-size-base                   // 20px
+$font-size-h6: ceil(($font-size-base * 0.795))    // 16px
+//** Unit-less `line-height` for use in components like buttons.
+$line-height-base: 1.589
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed: floor(($font-size-base * $line-height-base))
+//** By default, this inherits from the `<body>`.
+$headings-font-family: $font-family-serif
+$headings-font-weight: 500 !default
+$headings-line-height: 1.1 !default
+$headings-color: inherit !default
+
+$jumbotron-padding: 1.124em
+
+$panel-bg: #f1f1f1 !default
+$panel-default-border: #ddd !default
+$panel-border-radius: 0px !default
+$panel-body-padding: 1em !default
+
+$thumbnail-border-radius: 0
+$thumbnail-border: $white
+
+
+/* Import Bootstrap */
+@import "bootstrap.scss"
+
+/* Compass Utilities */
+@import "compass"
+
+/* Font Features Mixin */
+@import "font-features"
+
+/* Bootstrap Lightbox */
+@import "jquery.fancybox"
+
+/* Global */
+
+::selection
+  background: $rcored /* WebKit/Blink Browsers */
+  color: $white
+::-moz-selection
+  background: $rcored /* Gecko Browsers */
+  color: $white
+
+/* Utility */
+.bump
+  &.bottom
+    margin-bottom: 2.247em  
+  &.top
+    margin-top: 2.247em
+
+.nomargin
+  &.top
+    margin-top: 0 
+  &.bottom
+    margin-bottom: 0
+
+/* Default Typography */
+
+html
+  font-size: 16px
+body
+  font-size: 1.25em
+
+h2, .h2
+  text-transform: lowercase
+  font-variant: small-caps
+  font-size: 1em
+  font-weight: 600
+  color: $gray-lightish
+  +font-feature-settings(smcp)
+
+h3, .h3
+  font-family: $font-family-sans-serif
+  font-weight: 600
+
+h4, .h4
+  font-family: $font-family-sans-serif
+  font-weight: 300
+
+h5, .h5
+  font-family: $font-family-sans-serif
+  font-weight: 400
+
+h6, .h6
+  font-family: $font-family-sans-serif
+  font-weight: 400
+
+@mixin caption-style
+  font-family: $font-family-serif
+  font-style: italic
+  color: $gray
+  padding: 0.281em 0
+  .title
+    font-variant: small-caps
+    +font-feature-settings(smcp)
+    font-weight: 600
+    font-style: normal
+    text-transform: lowercase
+
+article 
+  +hyphens(auto)
+  p + p, ul + p, .indent
+    text-indent: 1.999em
+  p, ul, ol
+    margin-bottom: 1.999em
+  li
+    margin-bottom: 0.795em
+  h3
+    margin-bottom: 0.281em
+  figcaption
+    @include caption-style
+    margin-bottom: 2.247em
+    font-size: 0.795em
+    border-bottom: 1px dotted $gray-lighter
+    .caption-body
+      padding-right: 2em
+
+.fancybox-skin
+  border-radius: 0
+
+.fancybox-title
+  margin-bottom: 0
+  font-size: 0.795em
+  @include caption-style
+
+/* Buttons and Nav */
+
+.btn
+  font-family: $font-family-serif
+  text-transform: lowercase
+  font-weight: 600
+  font-size: 0.795em
+  +font-feature-settings(smcp)
+
+@mixin active-nav
+  > a
+    color: $white
+    background-color: #090909
+
+.navbar
+  border-top: 3px solid $rcored
+  font-family: $font-family-serif
+  .ryan
+    color: $gray-lighter
+  .collier
+    color: $gray-lightish
+  .co
+    color: $gray
+  .navbar-brand
+    &:hover
+      color: $white !important
+  .navbar-nav a 
+    text-transform: lowercase
+    font-variant: small-caps
+    +font-feature-settings(smcp)
+
+body.index .index,
+body.work .work,
+body.resume .resume
+  @include active-nav
+
+/* Content Components */
+
+.jumbotron
+  h1, .h1
+    margin-top: 0
+    margin-bottom: 0em
+    font-size: 1em
+    font-weight: 400
+    color: $gray
+    +font-feature-settings(liga kern)
+  &.ps
+    padding-top: 0
+    margin-top: 2.247em
+
+/* Home Page */
+
+.index, .work_index
+  .jumbotron.headline
+    margin-bottom: 0
+
+.summary
+  font-size: 2.247em
+  margin-top: 1.405em
+
+.feature
+  margin-bottom: 2.247em
+aside 
+  p
+    font-size: .779em
+  h3
+    font-size: .779em
+    margin-top: 0
+  .panel-default
+    padding: .5em
+
+
+.work-feature
+  h2
+    margin-bottom: 0.281em
+  h3
+    font-size: 1.414em
+    font-weight: 500
+    margin-bottom: 1em
+  .work-feature-item
+    margin-bottom: 2.247em
+    +hyphens(auto)
+    +font-feature-settings(liga kern)
+
+
+/* Footer */
+footer
+  border-top: 1px solid $gray-lightish
+  background: $gray-lighter
+  margin-top: 2.247em
+  padding-top: 1.124em
+  padding-bottom: 1.124em
+  font-family: $font-family-serif
+  font-size: 0.795em
+  color: $gray-light
+  +font-feature-settings(onum)
