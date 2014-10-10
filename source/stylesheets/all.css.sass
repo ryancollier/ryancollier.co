@@ -20,6 +20,7 @@ $gray: lighten(#000, 33.5%) // #555
 $gray-light: lighten(#000, 46.7%) // #777
 $gray-lightish: lighten(#000, 76.8%)
 $gray-lighter: lighten(#000, 93.5%) // #eee
+$gray-lighterer: lighten(#000, 98.5%) // #eee
 $brand-primary: $rcored !default
 $brand-success: #5cb85c !default
 $brand-info: #5bc0de !default
@@ -30,6 +31,9 @@ $brand-danger: #d9534f !default
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
+
+$text-color: $gray
+
 $font-family-sans-serif: "Proxima Nova", Helvetica, Arial, sans-serif !default
 $font-family-serif: "Chaparral Pro", Georgia, "Times New Roman", Times, serif !default
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
@@ -106,6 +110,19 @@ html
 body
   font-size: 1.25em
 
+a:hover, a:focus
+  text-decoration: none
+  outline: none
+
+@mixin reverse-link
+  a
+    color: $gray-dark
+    &:hover
+      color: $rcored
+
+h2, .h2, h3, .h3
+  @include reverse-link
+
 h2, .h2
   text-transform: lowercase
   font-variant: small-caps
@@ -117,10 +134,12 @@ h2, .h2
 h3, .h3
   font-family: $font-family-sans-serif
   font-weight: 600
+  color: $gray-dark
 
 h4, .h4
   font-family: $font-family-sans-serif
-  font-weight: 300
+  font-weight: 400
+  color: $gray-dark
 
 h5, .h5
   font-family: $font-family-sans-serif
@@ -148,17 +167,49 @@ article
     text-indent: 1.999em
   p, ul, ol
     margin-bottom: 1.999em
+  ul
+    padding-left: 1em
   li
     margin-bottom: 0.795em
+    padding-left: 1.124em
+    list-style-type: square
+
   h3
     margin-bottom: 0.281em
   figcaption
     @include caption-style
+    @include reverse-link
+    a
+      border-bottom: 1px dotted $gray-light
     margin-bottom: 2.247em
     font-size: 0.795em
     border-bottom: 1px dotted $gray-lighter
-    .caption-body
-      padding-right: 2em
+    //.caption-body
+
+  .in-line
+    @media (min-width: $screen-md-min)
+      padding: 0.795em 0 
+      margin: 2.247em 0 
+      border-bottom: 1px dotted $gray-lighter
+      border-top: 1px dotted $gray-lighter
+      figcaption
+        border-bottom: 0
+        padding-top: 0
+
+  .feature
+    margin-bottom: 0
+  .highlights
+    border-top: 1px solid $gray-lighter
+    border-bottom: 1px solid $gray-lighter
+    background-color: $gray-lighterer
+    padding: 0 1.999em
+      
+    li
+      font-size: 0.795em
+    .h2
+      color: $gray-light
+
+      
 
 .fancybox-skin
   border-radius: 0
@@ -231,7 +282,7 @@ body.resume .resume
 .feature
   margin-bottom: 2.247em
 aside 
-  p
+  p, li
     font-size: .779em
   h3
     font-size: .779em
