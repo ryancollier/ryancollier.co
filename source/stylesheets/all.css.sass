@@ -126,10 +126,10 @@ h2, .h2, h3, .h3
 h2, .h2
   text-transform: lowercase
   font-variant: small-caps
+  +font-feature-settings(smcp)
   font-size: 1em
   font-weight: 600
   color: $gray-lightish
-  +font-feature-settings(smcp)
 
 h3, .h3
   font-family: $font-family-sans-serif
@@ -221,8 +221,6 @@ article
     .h2
       color: $gray-light
 
-      
-
 .fancybox-skin
   border-radius: 0
 
@@ -235,6 +233,7 @@ article
 
 .btn
   font-family: $font-family-serif
+  font-variant: small-caps
   text-transform: lowercase
   font-weight: 600
   font-size: 0.795em
@@ -327,3 +326,14 @@ footer
   font-size: 0.795em
   color: $gray-light
   +font-feature-settings(onum)
+
+  /* Fix Safari and Chrome Small Caps */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  figcaption .title,
+  h2, .h2,
+  .navbar .navbar-nav a,
+    font-size: 1.144em
+  .btn
+    font-size: 1em
+    // See more at: http://bullmandesign.com/quick-tips/make-small-caps-behave-in-webkit-browsers#sthash.XqjCScSF.dpuf
+
