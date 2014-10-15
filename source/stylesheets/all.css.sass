@@ -34,8 +34,8 @@ $brand-danger: #d9534f !default
 
 $text-color: $gray
 
-$font-family-sans-serif: "Proxima Nova", Helvetica, Arial, sans-serif !default
-$font-family-serif: "Chaparral Pro", Georgia, "Times New Roman", Times, serif !default
+$font-family-sans-serif: "proxima-nova", "Proxima Nova", Helvetica, Arial, sans-serif !default
+$font-family-serif: "chaparral-pro", "Chaparral Pro", Georgia, "Times New Roman", Times, serif !default
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace !default
 $font-family-base: $font-family-sans-serif !default
@@ -57,6 +57,8 @@ $headings-font-family: $font-family-serif
 $headings-font-weight: 500 !default
 $headings-line-height: 1.1 !default
 $headings-color: inherit !default
+
+$ls-adjustment: 0.015em
 
 $jumbotron-padding: 1.124em
 
@@ -110,6 +112,7 @@ html
 body
   font-size: 1.25em
 
+
 a:hover, a:focus
   text-decoration: none
   outline: none
@@ -120,15 +123,16 @@ a:hover, a:focus
     &:hover
       color: $rcored
 
+@mixin fake-small-caps
+  text-transform: uppercase
+  font-size: 0.78em
+  font-weight: 700
+
 h2, .h2, h3, .h3
   @include reverse-link
 
 h2, .h2
-  text-transform: lowercase
-  font-variant: small-caps
-  +font-feature-settings(smcp)
-  font-size: 1em
-  font-weight: 600
+  @include fake-small-caps
   color: $gray-lightish
 
 h3, .h3
@@ -155,11 +159,10 @@ h6, .h6
   color: $gray
   padding: 0.281em 0
   .title
-    font-variant: small-caps
-    +font-feature-settings(smcp)
-    font-weight: 600
+    @include fake-small-caps
     font-style: normal
-    text-transform: lowercase
+    font-weight: 700
+
 
 article 
   +hyphens(auto)
@@ -232,12 +235,9 @@ article
 /* Buttons and Nav */
 
 .btn
+  @include fake-small-caps
   font-family: $font-family-serif
-  font-variant: small-caps
-  text-transform: lowercase
-  font-weight: 600
-  font-size: 0.795em
-  +font-feature-settings(smcp)
+
 
 @mixin active-nav
   > a
@@ -257,9 +257,13 @@ article
     &:hover
       color: $white !important
   .navbar-nav a 
-    text-transform: lowercase
-    font-variant: small-caps
-    +font-feature-settings(smcp)
+    text-transform: uppercase
+    font-size: 0.78em
+    font-weight: 600
+    //text-transform: lowercase
+    //font-variant: small-caps
+    //+font-feature-settings(smcp)
+    //letter-spacing: $ls-adjustment
 
 body.index .index,
 body.work .work,
@@ -326,14 +330,3 @@ footer
   font-size: 0.795em
   color: $gray-light
   +font-feature-settings(onum)
-
-  /* Fix Safari and Chrome Small Caps */
-@media screen and (-webkit-min-device-pixel-ratio:0)
-  figcaption .title,
-  h2, .h2,
-  .navbar .navbar-nav a,
-    font-size: 1.144em
-  .btn
-    font-size: 1em
-    // See more at: http://bullmandesign.com/quick-tips/make-small-caps-behave-in-webkit-browsers#sthash.XqjCScSF.dpuf
-
