@@ -10,7 +10,6 @@
 
     <title><%= current_page.data.title || "RyanCollier.co" %></title>
 
-    <!-- Bootstrap core CSS -->
     <%= stylesheet_link_tag "normalize", "all" %>
    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,7 +25,6 @@
 
   <body class="<%= page_classes %>">
 
-    <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -42,18 +40,18 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="index"><a href="/">Front</a></li>
             <li class="work"><a href="/work/">Work</a></li>
-            <li class="resume"><a href="./">Résumé</a></li>
+            <li class="about"><a href="/about/">About</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div><!--/navbar-collapse -->
       </div>
-    </div>
+    </div><!-- /navbar -->
 
   <% if content_for?(:headline) %>  
     <div class="jumbotron headline">  
 
       <%= yield_content :headline %>
 
-    </div>
+    </div><!-- /headline -->
   <% end %>
     
     <div class="container">
@@ -62,15 +60,14 @@
     
     </div><!-- /container -->
 
-  <% if content_for?(:ps_content) %>
+      <% if content_for?(:ps_content) %>
 
     <div class="jumbotron ps">  
       <div class="container">
         <div><%= yield_content :ps_content %></div>
       </div>
-    </div>      
+    </div><!-- /ps -->    
 
-  <% end %>
+    <% end %>
 
-
- <%= partial "footer" %>
+<%= partial "footer" %>
