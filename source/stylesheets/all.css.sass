@@ -55,12 +55,13 @@ $line-height-computed: floor(($font-size-base * $line-height-base))
 //** By default, this inherits from the `<body>`.
 $headings-font-family: $font-family-serif
 $headings-font-weight: 500 !default
-$headings-line-height: 1.1 !default
+$headings-line-height: 1.124 !default
 $headings-color: inherit !default
 
 $ls-adjustment: 0.015em
 
 $jumbotron-padding: 1.124em
+$jumbotron-font-size: 1.589em
 
 $panel-bg: #f1f1f1 !default
 $panel-default-border: #ddd !default
@@ -128,6 +129,7 @@ a:hover, a:focus
   font-size: 0.78em
   font-weight: 700
 
+
 h2, .h2, h3, .h3
   @include reverse-link
 
@@ -139,11 +141,13 @@ h3, .h3
   font-family: $font-family-sans-serif
   font-weight: 600
   color: $gray-dark
+  text-transform: none
 
 h4, .h4
   font-family: $font-family-sans-serif
   font-weight: 400
   color: $gray-dark
+  text-transform: none
 
 h5, .h5
   font-family: $font-family-sans-serif
@@ -169,13 +173,22 @@ article
   +hyphens(auto)
   p + p, ul + p, .indent
     text-indent: 1.999em
-  p, ul, ol
+  
+  p + p.no-indent
+    text-indent: 0
+
+  p
     margin-bottom: 1.999em
     @include reverse-link
     a
       border-bottom: 1px dotted $gray-light
   ul
     padding-left: 1em
+    &.list-unstyled
+      padding-left: 0
+      li
+        padding-left: 0
+        list-style-type: none
   li
     margin-bottom: 0.795em
     padding-left: 1.124em
@@ -276,14 +289,22 @@ body.about .about
 .jumbotron
   h1, .h1
     margin-top: 0
-    margin-bottom: 0em
-    font-size: 1em
+    margin-bottom: 0.141em
+    font-size: 2.247em
     font-weight: 400
     color: $gray
     +font-feature-settings(liga kern)
+    .index &
+      font-size: 3.178em
   &.ps
     padding-top: 0
+    padding-bottom: 1.414em
     margin-top: 2.247em
+    .btn
+      font-size: 0.398em
+      padding: 7px 10px 5px
+    .btn-default
+      color: $rcored
 
 /* Home Page */
 
@@ -292,8 +313,12 @@ body.about .about
     margin-bottom: 0
 
 .summary
-  font-size: 2.247em
-  margin-top: 1.405em
+  //font-size: 2.247em
+  margin-top: 2.247em
+  .index &
+    margin-top: 2.247em
+    img
+      margin: 0 auto
 
 .feature
   margin-bottom: 3.178em
