@@ -237,6 +237,7 @@ article
       font-size: 0.795em
     .h2
       color: $gray-light
+      margin-top: 1.414em
 
 .fancybox-skin
   border-radius: 0
@@ -251,7 +252,14 @@ article
 .btn
   @include fake-small-caps
   font-family: $font-family-serif
-
+  font-size: 0.707em
+  font-weight: 600
+  line-height: 2.247em
+  &.btn-default
+    color: $gray
+    &:hover
+      background-color: $gray-lighter
+      color: $gray-dark
 
 @mixin active-nav
   > a
@@ -287,9 +295,10 @@ body.about .about
 /* Content Components */
 
 .jumbotron
+  background-color: $gray-lighter
   h1, .h1
     margin-top: 0
-    margin-bottom: 0.141em
+    margin-bottom: 0
     font-size: 2.247em
     font-weight: 400
     color: $gray
@@ -316,7 +325,9 @@ body.about .about
   //font-size: 2.247em
   margin-top: 2.247em
   .index &
-    margin-top: 2.247em
+    margin-top: 3.178em
+    p.tagline
+      line-height: 1.589em
     img
       margin: 0 auto
 

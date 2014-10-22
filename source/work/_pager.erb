@@ -1,0 +1,22 @@
+<!-- Work Pager -->
+<% if last == "true" %>
+	
+	<div class="text-center">
+        <div class="btn-group">
+            <a href="/work/" class="btn btn-default">Back to All</a>
+            <a href="/work/#snapshots" class="btn btn-primary">Snap Shots</a>
+            
+        </div>
+        <p></p>
+    </div>
+
+<% else %>
+	
+	<div class="text-center">
+        <div class="btn-group">
+            <a href="/work/" class="btn btn-default">Back to All</a>
+            <a href="<%= nextsample %>" class="btn btn-primary">Next Sample</a>
+        </div>
+    </div>
+
+<% end %>
