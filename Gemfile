@@ -18,3 +18,5 @@ gem 'middleman-sprockets', '3.3.2' # https://github.com/middleman/middleman/issu
 gem "bootstrap-sass", :require => false
 
 gem "nokogiri"
+
+gem 'middleman-s3_sync'
